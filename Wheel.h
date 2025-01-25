@@ -89,7 +89,7 @@ class Wheel {
     void cw(byte speed){
       digitalWrite(_en_pin, 0);
       digitalWrite(_pwml2_pin, 1);
-      analogWrite(_pwml1_pin, 255-speed);
+      analogWrite(_pwml1_pin, speed);
     }
 };
 #endif

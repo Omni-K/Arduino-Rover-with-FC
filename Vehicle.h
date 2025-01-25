@@ -12,8 +12,8 @@ class Vehicle{
     }
     void fw(byte speed) {
       if (speed < 0) speed = abs(speed);
-      _w_left.fw(speed);
-      _w_right.fw(speed);
+      //_w_left.fw(speed);
+      //_w_right.fw(speed);
     }
     void free(){
       _w_left.free();

@@ -9,7 +9,7 @@
 //byte pwm_pins[] = {3, 5, 6, 9, 10, 11};
 
 Wheel left_wheel(7, 8, 9);
-Vehicle car(7, 8, 9, 4, 3, 2);
+Vehicle car(4, 3, 2, 7, 8, 9);
 TwoChannelJoyStick pult(10, 11, A0, A1);
 
 /*
@@ -43,8 +43,11 @@ void loop() {
 void loop_control(){
   int s1 = pult.channel_1_8bit();
   int s2 = pult.channel_2_8bit();
+
+
   if (DEBUG){
     pp("ch1:\t"); pp(s1); pp("\tch2:\t"); ppln(s2);
+    pp(pult.aux1_on(), '\t'); ppln(pult.aux2_on());
   }
   if (s1 == 0 and s2 == 0) car.free();
   if (s1 == 0 and s2 < 0) car.left_round(s2);
