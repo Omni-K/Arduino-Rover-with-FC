@@ -43,10 +43,9 @@ void loop() {
 void loop_control(){
   int s1 = pult.channel_1_8bit();
   int s2 = pult.channel_2_8bit();
-
-  pp("ch1:\t"); pp(s1); pp("\tch2:\t"); ppln(s2);
-
-
+  if (DEBUG){
+    pp("ch1:\t"); pp(s1); pp("\tch2:\t"); ppln(s2);
+  }
   if (s1 == 0 and s2 == 0) car.free();
   if (s1 == 0 and s2 < 0) car.left_round(s2);
   if (s1 == 0 and s2 > 0) car.right_round(s2);
