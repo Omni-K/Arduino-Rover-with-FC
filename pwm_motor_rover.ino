@@ -1,8 +1,9 @@
-// ------------------------------------------------------------- CLASSES
 #include "Wheel.h"
 #include "TwoChannelJoyStick.h"
 #include "Vehicle.h"
+#include "PrettySerialPrint.h"
 
+#define DEBUG true
 
 // ------------------------------------------------------------- ПРЕДУСТАНОВКИ И ПЕРЕМЕННЫЕ
 //byte pwm_pins[] = {3, 5, 6, 9, 10, 11};
@@ -43,6 +44,9 @@ void loop_control(){
   int s1 = pult.channel_1_8bit();
   int s2 = pult.channel_2_8bit();
 
+  pp("ch1:\t"); pp(s1); pp("\tch2:\t"); ppln(s2);
+
+
   if (s1 == 0 and s2 == 0) car.free();
   if (s1 == 0 and s2 < 0) car.left_round(s2);
   if (s1 == 0 and s2 > 0) car.right_round(s2);
@@ -57,6 +61,8 @@ void loop_control(){
 
   delay(5);
 }
+
+
 /*
 void loop_2(){
   Serial.println("SPEED UP FW");
